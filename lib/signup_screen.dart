@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:animatedgiftbox/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -9,14 +12,27 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
 
   @override
+  void initState() {
+    super.initState();
+    Timer(const Duration(seconds: 1), () {
+      Navigator.push(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (_, __, ___) => const Homepage(),
+          transitionDuration: const Duration(milliseconds: 1500),
+          transitionsBuilder: (_, a, __, c) => FadeTransition(opacity: a, child: c),
+        ),
+      );
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: InkWell(
         onTap: (){
-          Navigator.pushNamed(context, '/home');
         },
         child: Container(
-          padding:EdgeInsets.all(10),
+          padding:const EdgeInsets.all(10),
           child:Stack(
             children: <Widget>[
               Positioned(
@@ -28,15 +44,13 @@ class _SignupScreenState extends State<SignupScreen> {
                         color: Colors.white
                     )),
               ),
-              Positioned(
+              const Positioned(
                   top: 10,
                   bottom: 0,
                   right: 0,
                   left: 0,
                   child: Center(
-                    child: Container(
-                        child: Image(image: AssetImage('assets/images/foreground.png'))
-                    ),
+                    child: Image(image: AssetImage('assets/images/foreground.png')),
                   )
               ),
             ],
@@ -45,4 +59,5 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
     );
   }
+
 }
