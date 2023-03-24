@@ -122,7 +122,7 @@ class _HomepageState extends State<Homepage>  {
                               child: TextFormField (
                                 validator: (text) {
                                   if (enterCodeValue.isEmpty) {
-                                    return 'Text is empty';
+                                    return '             Text is empty';
                                   }
                                   return null;
                                 },
